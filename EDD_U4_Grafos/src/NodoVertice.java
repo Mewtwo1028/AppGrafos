@@ -106,4 +106,19 @@ public class NodoVertice {
         temp.arriba = null;
         return true;
     }
+
+    @Override
+    public String toString() {
+        
+        String auxS = "["+dato+"]";
+        NodoArista auxNA = arista;
+        while (auxNA != null) 
+        {
+            auxS += "->>" + auxNA.direccion.dato;
+            auxNA = auxNA.abajo;
+            
+        }
+        
+        return auxS;
+    }
 }

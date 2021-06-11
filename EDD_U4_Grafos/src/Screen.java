@@ -23,6 +23,9 @@ public class Screen extends javax.swing.JFrame {
         jListABorrar.removeAllItems();
         jListIni.removeAllItems();
         jListFin.removeAllItems();
+        //btnEliminarVerticeActionPerformed(java.awt.event.ActionEvent evt);
+        
+        
     }
 
     /**
@@ -40,7 +43,6 @@ public class Screen extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
         txtAreaLista = new javax.swing.JTextArea();
-        btnInsertarArista = new javax.swing.JButton();
         btnEliminarArista = new javax.swing.JButton();
         btnMatriz = new javax.swing.JButton();
         jScrollPane4 = new javax.swing.JScrollPane();
@@ -51,6 +53,7 @@ public class Screen extends javax.swing.JFrame {
         jListABorrar = new javax.swing.JComboBox<>();
         jListFin = new javax.swing.JComboBox<>();
         jListIni = new javax.swing.JComboBox<>();
+        btnInsertarArista = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -88,14 +91,6 @@ public class Screen extends javax.swing.JFrame {
 
         getContentPane().add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 210, 280, 180));
 
-        btnInsertarArista.setText("Insertar Arista");
-        btnInsertarArista.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnInsertarAristaActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnInsertarArista, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 80, 140, 50));
-
         btnEliminarArista.setText("Eliminar Arista");
         btnEliminarArista.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -127,7 +122,7 @@ public class Screen extends javax.swing.JFrame {
         getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 400, 270, 30));
 
         jLabel4.setText("Ingrese El vertice a eliminar");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 480, -1, -1));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 440, -1, -1));
 
         btnEliminarVertice.setText("Eliminar Vértice");
         btnEliminarVertice.addActionListener(new java.awt.event.ActionListener() {
@@ -135,16 +130,21 @@ public class Screen extends javax.swing.JFrame {
                 btnEliminarVerticeActionPerformed(evt);
             }
         });
-        getContentPane().add(btnEliminarVertice, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 570, 120, 30));
+        getContentPane().add(btnEliminarVertice, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 530, 120, 30));
 
-        jListABorrar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        getContentPane().add(jListABorrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 520, -1, -1));
+        getContentPane().add(jListABorrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 470, -1, -1));
 
-        jListFin.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        getContentPane().add(jListFin, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 110, -1, -1));
+        getContentPane().add(jListFin, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 100, -1, -1));
 
-        jListIni.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         getContentPane().add(jListIni, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, -1, -1));
+
+        btnInsertarArista.setText("Insertar Arista");
+        btnInsertarArista.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnInsertarAristaActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnInsertarArista, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 80, 140, 50));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -152,25 +152,20 @@ public class Screen extends javax.swing.JFrame {
     private void txtDatoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDatoActionPerformed
         
     }//GEN-LAST:event_txtDatoActionPerformed
-        String[] a = new String[100];
+        char a;
         int i = 0;
         char aux;
         
     private void btnInsertarVerticeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInsertarVerticeActionPerformed
-        a[i] = txtDato.getText().substring(0,1);
-        if (graph.insertarVertice(a[i].charAt(0))) {
-            jListIni.addItem(a[i]);
-            jListFin.addItem(a[i]);
-            jListABorrar.addItem(a[i]);  
+        a = txtDato.getText().charAt(0);
+        if (graph.insertarVertice(a)) {
+            jListIni.addItem(a);
+            jListFin.addItem(a);
+            jListABorrar.addItem(a);  
         }
-        i++;
         
         
     }//GEN-LAST:event_btnInsertarVerticeActionPerformed
-
-    private void btnInsertarAristaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInsertarAristaActionPerformed
-        graph.insertarAristas((char) jListIni.getSelectedIndex(), (char) jListFin.getSelectedIndex());
-    }//GEN-LAST:event_btnInsertarAristaActionPerformed
 
     private void btnEliminarVerticeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarVerticeActionPerformed
         char aux = jListABorrar.getSelectedItem().toString().charAt(0);
@@ -188,21 +183,29 @@ public class Screen extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEliminarAristaActionPerformed
 
     private void btnMatrizActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMatrizActionPerformed
-        int aux = jListABorrar.getItemCount();
+        //int aux = jListABorrar.getItemCount();
         boolean[][] matrix = graph.matrixDeAdyacencia();
-        String auxS = "";
+        String auxS = " ";
         
-        for (int i = 0; i < aux; i++)
+        for (int i = 0; i < jListABorrar.getItemCount(); i++)
         {
             auxS += jListABorrar.getItemAt(i) + " ";
         }
         
-        for (int i = 0; i < aux; i++)
+        for (int i = 0; i < jListABorrar.getItemCount(); i++)
         {
             auxS += "\n" + jListABorrar.getItemAt(i);;
-           for (int j = 0; j < aux; j++)
+           for (int j = 0; j < jListABorrar.getItemCount(); j++)
            {
-               auxS += matrix[i][j] ? "1 " : "0 ";
+               if (matrix[i][j] == true){
+                   
+                   auxS += "1 ";
+               }
+               else if (matrix[i][j] == false){
+                   
+                   auxS += "0 ";
+               }
+               
            } 
         }
         
@@ -214,10 +217,14 @@ public class Screen extends javax.swing.JFrame {
     }//GEN-LAST:event_txtDatoMouseClicked
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        if (jListABorrar.getItemCount() > 0){ 
-            txtAreaLista.setText(graph.listaAdyacencia((char) jListABorrar.getSelectedItem()));
+        if (jListIni.getItemCount() > 0){ 
+            txtAreaLista.setText(graph.listaAdyacencia((char) jListIni.getSelectedItem()));
         }
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void btnInsertarAristaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInsertarAristaActionPerformed
+        graph.insertarAristas((char) jListIni.getSelectedItem(), (char) jListFin.getSelectedItem());
+    }//GEN-LAST:event_btnInsertarAristaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -257,16 +264,16 @@ public class Screen extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnEliminarArista;
     private javax.swing.JButton btnEliminarVertice;
-    private javax.swing.JButton btnInsertarArista;
+    public javax.swing.JButton btnInsertarArista;
     private javax.swing.JButton btnInsertarVertice;
-    private javax.swing.JButton btnMatriz;
+    public javax.swing.JButton btnMatriz;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JComboBox<String> jListABorrar;
-    private javax.swing.JComboBox<String> jListFin;
-    private javax.swing.JComboBox<String> jListIni;
+    private javax.swing.JComboBox<Character> jListABorrar;
+    private javax.swing.JComboBox<Character> jListFin;
+    private javax.swing.JComboBox<Character> jListIni;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTextArea txtAreaLista;

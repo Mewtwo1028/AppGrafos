@@ -164,7 +164,7 @@ public class Grafos {
         }
         int vertices = iteraVertices();
         int j;
-        boolean matrix[][] = new boolean[vertices][vertices];
+        boolean[][] matrix = new boolean[vertices][vertices];
         for (int i = 0; i < vertices; i++) 
         {
             for (j = 0; j < vertices; j++) 
@@ -199,6 +199,9 @@ public class Grafos {
         return matrix;
     }
     
+    public void camino (){
+        
+        //NO SE PUDO PROFE:((
     
-
+    }
 }
