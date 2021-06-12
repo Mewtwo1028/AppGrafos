@@ -199,9 +199,23 @@ public class Grafos {
         return matrix;
     }
     
-    public void camino (){
+    public String camino (char c[]){
         
-        //NO SE PUDO PROFE:((
+        String auxS = "";
+        
+        for(int i = 0; i < c.length - 1; i++)
+        {
+            if(buscarVertice(c[i]).buscarArista(buscarVertice(c[i + 1])) != null)
+            {
+                auxS = " sí existe:) ";
+            }
+            
+            else
+            {
+                auxS = " no existe:( ";
+            }
+        }
+        return auxS;
     
     }
 }

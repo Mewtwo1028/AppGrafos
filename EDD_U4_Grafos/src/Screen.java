@@ -54,6 +54,11 @@ public class Screen extends javax.swing.JFrame {
         jListFin = new javax.swing.JComboBox<>();
         jListIni = new javax.swing.JComboBox<>();
         btnInsertarArista = new javax.swing.JButton();
+        txtCamino = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        txtAreaCamino = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -122,7 +127,7 @@ public class Screen extends javax.swing.JFrame {
         getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 400, 270, 30));
 
         jLabel4.setText("Ingrese El vertice a eliminar");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 440, -1, -1));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 480, -1, -1));
 
         btnEliminarVertice.setText("Eliminar Vértice");
         btnEliminarVertice.addActionListener(new java.awt.event.ActionListener() {
@@ -130,9 +135,9 @@ public class Screen extends javax.swing.JFrame {
                 btnEliminarVerticeActionPerformed(evt);
             }
         });
-        getContentPane().add(btnEliminarVertice, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 530, 120, 30));
+        getContentPane().add(btnEliminarVertice, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 570, 120, 30));
 
-        getContentPane().add(jListABorrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 470, -1, -1));
+        getContentPane().add(jListABorrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 520, -1, -1));
 
         getContentPane().add(jListFin, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 100, -1, -1));
 
@@ -145,6 +150,24 @@ public class Screen extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnInsertarArista, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 80, 140, 50));
+        getContentPane().add(txtCamino, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 520, 100, -1));
+
+        jLabel3.setText("Ingrese el camino a verificar (v1,v2)");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 480, -1, -1));
+
+        jButton1.setText("Validar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 580, 70, -1));
+
+        txtAreaCamino.setColumns(20);
+        txtAreaCamino.setRows(5);
+        jScrollPane1.setViewportView(txtAreaCamino);
+
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 510, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -226,6 +249,14 @@ public class Screen extends javax.swing.JFrame {
         graph.insertarAristas((char) jListIni.getSelectedItem(), (char) jListFin.getSelectedItem());
     }//GEN-LAST:event_btnInsertarAristaActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        String auxS = txtCamino.getText().trim().replaceAll(",", "");
+        String auxS1 = graph.camino(auxS.toCharArray());
+        char auxC1 = txtCamino.getText().charAt(0);
+        char auxC2 = txtCamino.getText().charAt(2);
+        txtAreaCamino.setText("El camino de "+auxC1+" a "+auxC2+" "+auxS1);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -267,17 +298,22 @@ public class Screen extends javax.swing.JFrame {
     public javax.swing.JButton btnInsertarArista;
     private javax.swing.JButton btnInsertarVertice;
     public javax.swing.JButton btnMatriz;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JComboBox<Character> jListABorrar;
     private javax.swing.JComboBox<Character> jListFin;
     private javax.swing.JComboBox<Character> jListIni;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JTextArea txtAreaCamino;
     private javax.swing.JTextArea txtAreaLista;
     private javax.swing.JTextArea txtAreaMatrix;
+    private javax.swing.JTextField txtCamino;
     private javax.swing.JTextField txtDato;
     // End of variables declaration//GEN-END:variables
 }
